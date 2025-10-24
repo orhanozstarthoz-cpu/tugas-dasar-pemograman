@@ -1,52 +1,40 @@
-# Program Perhitungan Gaji Karyawan PT. BOS PELIT
-
-# Gaji pokok karyawan
 gaji_pokok = 300000
+print("SILAHKAN INPUT DATA ANDA")
+nama = input("Nama Karyawan :")
+golongan = input("Golongan Jabatan [1,2,3]:")
+pendidikan = input("Pendidikan [SMA/D1/D3/S1]:")
+jam_kerja =int(input("Jumlah Jam Kerja :"))
 
-# Input data karyawan
-nama_karyawan = input("Masukkan Nama karyawan: ")
-golongan = int(input("Masukkan golongan jabatan (1-3): "))
-pendidikan = input("Masukkan tingkat pendidikan (SMA/D1/D3/S1): ").upper()
-jam_kerja = int(input("Masukkan jumlah jam kerja dalam sehari: "))
-
-# Hitung gaji sesusai dengan jabatan masing-masing
-if  golongan == 1 :
-    tunjangan_jabatan = 0.05 * gaji_pokok
-elif golongan == 2:
-    tunjangan_jabatan = 0.10 * gaji_pokok
-elif golongan == 3:
-    tunjangan_jabatan = 0.15 * gaji_pokok
+if golongan == "1":
+	persentase_jabatan = 0.05 * gaji_pokok
+elif golongan== "2":
+	persentase_jabatan = 0.10 * gaji_pokok
+elif golongan == "3":
+	persentase_jabatan = 0.15 * gaji_pokok
 else:
-    tunjangan_jabatan = 0
-    print("Golongan tidak valid!")
+	persentase_jabatan = 0
 
-# Hitung tunjangan pendidikan
-if pendidikan == "SMA":
-    tunjangan_pendidikan = 0.025 * gaji_pokok
-elif pendidikan == "D1":
-    tunjangan_pendidikan = 0.05 * gaji_pokok
-elif pendidikan == "D3":
-    tunjangan_pendidikan = 0.20 * gaji_pokok
-elif pendidikan == "S1":
-    tunjangan_pendidikan = 0.30 * gaji_pokok
+if pendidikan.upper() == "SMA":
+	persentase_pendidikan  = 0.025 * gaji_pokok
+elif pendidikan.upper() == "D1":
+	persentase_pendidikan  = 0.05 * gaji_pokok
+elif pendidikan.upper() == "D3":
+	persentase_pendidikan  = 0.20 * gaji_pokok
+elif pendidikan.upper() == "S1":
+	persentase_pendidikan = 0.30 * gaji_pokok
 else:
-    tunjangan_pendidikan = 0
-    print("Tingkat pendidikan tidak valid!")
+	persentase_pendidikan = 0
 
-# --- Hitung honor lembur ---
-if jam_kerja > 8:
-    lembur = (jam_kerja - 8) * 3500
-else:
-    lembur = 0
+if jam_kerja >= 8:
+    lembur = jam_kerja * 3500
 
-# --- Total gaji akhir ---
-total_gaji = gaji_pokok + tunjangan_jabatan + tunjangan_pendidikan + lembur
+gaji = gaji_pokok + persentase_jabatan + persentase_pendidikan
 
-# --- Tampilkan hasil ---
-print("\n=== RINCIAN GAJI KARYAWAN ===")
-print("Nama Karyawan       : " ,nama_karyawan)
-print("Gaji Pokok          : ", gaji_pokok)
-print("Tunjangan Jabatan   : " ,tunjangan_jabatan)
-print("Tunjangan Pendidikan : " ,tunjangan_pendidikan)
-print("Honor Lembur        : " ,lembur)
-print("Total Gaji Diterima : " , total_gaji )
+print("Karyawan yang bernama "  +str(nama))
+print("Honor yang diterima ", gaji)
+print("   Tunjangan Jabatan ", persentase_jabatan)
+print("   Tunjangan Pendidikan ", persentase_pendidikan)
+print("   Honor Lembur ", lembur )
+
+
+
